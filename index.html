@@ -139,10 +139,21 @@
           </nav>
           <!-- second-nav  -->
         </div>
+        <!-- search-Box -->
+        <div class="container text-center">
+          <input type="text" placeholder="Search Here!!!" class="w-1/2 bg-red-50 rounded-l-lg border border-red-100 border-opacity-50 shadow-sm" id="searchField">
+          <input type="submit" class="bg-rose-500 hover:bg-rose-600 py-2 px-3 cursor-pointer rounded-r-lg text-white"  value="Search">
+          <h4 class="mt-5 text-2xl font-semibold text-slate-600">No News In ${this} Category</h4>
+        </div>
+        <!-- search-Box -->
       </section>
     </header>
     <main>
       <section>
+        <div class="news-picks container mx-auto flex justify-end w-4/5 mt-5">
+          <button class="bg-rose-500 hover:bg-rose-600 py-1.5 px-2.5 cursor-pointer mr-5 rounded-md text-white">Today’s Pick</button>
+          <button class="bg-emerald-500 hover:bg-emerald-600 py-1.5 px-2.5 cursor-pointer mr-5 rounded-md text-white">Trending</button>
+        </div>
         <div class="NewsDiv py-4">
             <div
             class="container mx-auto my-8 border rounded-xl border-slate-300 border-opacity-25 flex shadow-lg shadow-red-100
