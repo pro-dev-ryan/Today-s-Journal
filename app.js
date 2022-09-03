@@ -3,9 +3,9 @@ catView = async(id)=> {
     const filterdData = await res.json()
     const catArray = filterdData.data;
     displayNews(catArray);
-    
 }
 
+catView('02')
 
 displayNews = async (ref) => {
     const parentDiv = document.getElementById('newsDiv');
@@ -18,19 +18,19 @@ displayNews = async (ref) => {
        class="container mx-auto my-8 border rounded-xl border-slate-300 border-opacity-25 flex shadow-lg shadow-red-100
         w-4/6 h-auto"
      >
-       <div class="img w-3/5">
+       <div class="img w-1/3">
          <img
            src="${image_url ? thumbnail_url : N/A}"
            class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-full md:rounded-none md:rounded-l-lg"
            alt=""
          />
        </div>
-       <div class="card-body bg-pink-50">
+       <div class="card-body w-2/3 bg-pink-50">
          <h2 class="pl-3 mt-5 text-2xl font-semibold tracking-wide  text-rose-600">
            ${title}
          </h2>
          <p class="mr-16 ml-3 my-3 font-normal text-sm text-gray-500">
-           ${details}
+           ${details.length > 300 ? details.slice(0, 305) + (" ...")  : details}
          </p>
          <div
            class="card-footer mt-8 px-5 py-1 flex justify-between items-center bg-teal-100 bg-opacity-30"
