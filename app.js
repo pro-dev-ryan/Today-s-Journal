@@ -6,13 +6,13 @@ catView = async(id)=> {
         const catArray = filterdData.data;
         displayNews(catArray);     
     } catch (error) {
-        console.log(error);
+    
     }
    
     
+
 }
 
-catView('05')
 
 displayLoader = (isLoading) => {
     const loader = document.getElementById('loader');
@@ -26,6 +26,7 @@ displayNews = async (ref) => {
     parentDiv.textContent = '';
     ref.forEach(news => {
         const {author, details, image_url, _id, others_info , thumbnail_url, title, total_view} = news;
+        // console.log(news);
         const stringobj = JSON.stringify(news);
        const singleNews = document.createElement('div');
        singleNews.innerHTML = `
@@ -73,7 +74,7 @@ displayNews = async (ref) => {
              <p class="text-xs pl-1">${total_view? total_view +" views" : 'N/A'  }</p>
            </div>
            <button class="relative inline-flex items-center justify-center  text-sm font-medium text-emerald-600 hover:text-red-500" 
-           onclick="viewDetails('${_id}')"> Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+           onclick='viewDetails("${_id}")'> Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                   <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                   <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                 </svg>
@@ -96,19 +97,20 @@ displayNews = async (ref) => {
     parentDiv.appendChild(singleNews)
 })
 displayLoader(false);
-    viewDetails =(id) => {
-        try {
-            console.log(id);
-        } catch (error) {
-        }
-    
-        // const modalId = await fetch(`https://openapi.programming-hero.com/api/news/${id}`)
-        // const filteredModal = await modalId.json()
-        // console.log(filteredModal);
-    
-    
-    }
+
+
 }
 
-
-
+displayLoader(false);
+    viewDetails = async (id) => {
+        try {
+            const modalId = await fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+            const filteredModal = await modalId.json()
+            const singleId = filteredModal.data;
+            singleId.forEach(modal => {
+            const {author, details, title,} = modal
+                console.log(modal);
+            })
+        } catch (error) {
+        }
+    }
