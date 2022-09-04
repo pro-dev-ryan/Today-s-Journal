@@ -4,6 +4,16 @@ catView = async(id)=> {
         const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
         const filterdData = await res.json()
         const catArray = filterdData.data;
+        const elementNumber = catArray.length;
+        console.log(elementNumber);
+        const errorDiv = document.getElementById('searchField');
+        if (elementNumber ===0){
+            errorDiv.value = `No News Found`
+        }else{
+            errorDiv.value = `${elementNumber} News Found`
+            
+        }
+       
         displayNews(catArray);     
     } catch (error) {
     

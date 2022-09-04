@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js}"],
+    content: ["./node_modules/flowbite/**/*.js"],
     theme: { 
         fontSize: {
         'xs': '.75rem',

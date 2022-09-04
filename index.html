@@ -32,13 +32,13 @@
             </div>
             <div class="md:col-span-9 flex items-center justify-end">
               <ul class="flex pr-5 text-lg font-semibold text-rose-600">
-                <li class="mx-4 hover:underline cursor-pointer hover:text-emerald-500">Home</li>
-                <li class="mx-4 hover:underline cursor-pointer hover:text-emerald-500">Blog</li>
+                <li class="mx-4 hover:underline cursor-pointer hover:text-emerald-500"><a href="index.html">Home</a></li>
+                <li class="mx-4 hover:underline cursor-pointer hover:text-emerald-500"><a href="blog.html">Blog</a></li>
               </ul>
             </div>
           </div>
         </nav>
-        <div class=" bg-stone-50 border-b mt-1 border-white border-opacity-50 shadow-md"">
+        <div class=" bg-stone-50 border-b mt-1 border-white border-opacity-50 shadow-md">
           <!-- second-nav  -->
 
           <nav>
@@ -86,7 +86,7 @@
                   </li>
                   <li>
                     <a
-                      href="#" onclick="catView('02')""
+                      href="#" onclick="catView('02')"
                       class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 categoryBtn dark:text-emerald-400 md:dark:hover:text-rose-500 dark:hover:bg-gray-700 dark:hover:text-rose-500 md:dark:hover:bg-transparent dark:border-gray-700"
                       >Breaking news</a
                     >
@@ -143,6 +143,9 @@
         <div class="container text-center my-14 ">
           <input type="text" placeholder="Search Here!!!" class="w-1/2 bg-red-50 rounded-l-lg border border-red-100 border-opacity-50 shadow-sm" id="searchField">
           <input type="submit" class="bg-rose-500 hover:bg-rose-600 py-2 px-3 cursor-pointer rounded-r-lg text-white"  value="Search">
+        </div>
+        <div id="error">
+          
         </div>
         <!-- search-Box -->
       </section>
