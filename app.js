@@ -1,9 +1,10 @@
 catView = async(id)=> {
     try {
+        displayLoader(true);
         const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
         const filterdData = await res.json()
         const catArray = filterdData.data;
-         displayNews(catArray);     
+        displayNews(catArray);     
     } catch (error) {
         console.log(error);
     }
@@ -11,14 +12,21 @@ catView = async(id)=> {
     
 }
 
-catView('02')
+catView('05')
+
+displayLoader = (isLoading) => {
+    const loader = document.getElementById('loader');
+    isLoading ? loader.classList.remove('hidden'): loader.classList.add('hidden');
+    
+
+}
 
 displayNews = async (ref) => {
     const parentDiv = document.getElementById('newsDiv');
     parentDiv.textContent = '';
     ref.forEach(news => {
-        console.log(news);
-        const {author, details, image_url, others_info , thumbnail_url, title, total_view} = news;
+        const {author, details, image_url, _id, others_info , thumbnail_url, title, total_view} = news;
+        const stringobj = JSON.stringify(news);
        const singleNews = document.createElement('div');
        singleNews.innerHTML = `
        <div
@@ -32,7 +40,7 @@ displayNews = async (ref) => {
            alt=""
          />
        </div>
-       <div class="card-body w-full bg-pink-50">
+       <div class="card-body w-full h-48 bg-pink-50">
          <h2 class="pl-1 mt-1 text-xl tracking-tight  text-rose-600">
            ${title?.length > 35 ? title.split(' ', 7).join(' ') : title}
          </h2>
@@ -64,7 +72,8 @@ displayNews = async (ref) => {
              </svg>
              <p class="text-xs pl-1">${total_view? total_view +" views" : 'N/A'  }</p>
            </div>
-           <button class="relative inline-flex items-center justify-center  text-sm font-medium text-emerald-600 hover:text-red-500">Read More<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+           <button class="relative inline-flex items-center justify-center  text-sm font-medium text-emerald-600 hover:text-red-500" 
+           onclick="viewDetails('${_id}')"> Read More <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                   <path fill-rule="evenodd" d="M10.21 14.77a.75.75 0 01.02-1.06L14.168 10 10.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                   <path fill-rule="evenodd" d="M4.21 14.77a.75.75 0 01.02-1.06L8.168 10 4.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                 </svg>
@@ -85,5 +94,21 @@ displayNews = async (ref) => {
        </div>
      </div>`
     parentDiv.appendChild(singleNews)
-    })
+})
+displayLoader(false);
+    viewDetails =(id) => {
+        try {
+            console.log(id);
+        } catch (error) {
+        }
+    
+        // const modalId = await fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+        // const filteredModal = await modalId.json()
+        // console.log(filteredModal);
+    
+    
+    }
 }
+
+
+
